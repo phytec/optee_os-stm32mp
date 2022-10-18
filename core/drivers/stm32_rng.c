@@ -143,6 +143,12 @@ static TEE_Result stm32_rng_read_available(struct stm32_rng_device *dev,
 		uint32_t data32 = io_read32(base + RNG_DR);
 		size_t sz = MIN(size, sizeof(uint32_t));
 
+		/* Late seed error case: DR being 0 is an error status */
+		if (!data32) {
+			conceal_seed_error(dev);
+			return TEE_ERROR_NO_DATA;
+		}
+
 		memcpy(buf, &data32, sz);
 		buf += sz;
 		size -= sz;
