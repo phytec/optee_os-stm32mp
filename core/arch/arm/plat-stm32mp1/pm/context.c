@@ -213,7 +213,7 @@ static void __maybe_unused print_ccm_decryption_duration(void)
 		((unsigned long long)ctx->stgen_cnt * 1000) /
 		io_read32(stgen + CNTFID_OFFSET));
 
-	clk_enable(pm_clocks.bkpsram);
+	clk_disable(pm_clocks.bkpsram);
 }
 #else
 static void __maybe_unused print_ccm_decryption_duration(void)
