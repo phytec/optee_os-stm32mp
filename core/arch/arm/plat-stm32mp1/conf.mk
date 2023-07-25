@@ -12,6 +12,8 @@ flavor_dts_file-157F_DK2 = stm32mp157f-dk2.dts
 flavor_dts_file-157F_ED1 = stm32mp157f-ed1.dts
 flavor_dts_file-157F_EV1 = stm32mp157f-ev1.dts
 flavor_dts_file-135F_DK = stm32mp135f-dk.dts
+flavor_dts_file-135F_PHYCORE_EMMC_1GB = stm32mp135f-phycore-som-emmc-1gib.dts
+flavor_dts_file-135F_PHYCORE_EMMC_512MB = stm32mp135f-phycore-som-emmc-512mb.dts
 
 flavorlist-512M = $(flavor_dts_file-157A_DK1) \
 		  $(flavor_dts_file-157C_DK2) \
@@ -26,7 +28,8 @@ flavorlist-1G = $(flavor_dts_file-157A_ED1) \
 		$(flavor_dts_file-157C_ED1) \
 		$(flavor_dts_file-157C_EV1) \
 		$(flavor_dts_file-157F_ED1) \
-		$(flavor_dts_file-157F_EV1)
+		$(flavor_dts_file-157F_EV1) \
+                $(flavor_dts_file-135F_PHYCORE)
 
 flavorlist-MP15 = $(flavor_dts_file-157A_DK1) \
 		  $(flavor_dts_file-157C_DK2) \
@@ -41,7 +44,9 @@ flavorlist-MP15 = $(flavor_dts_file-157A_DK1) \
 		  $(flavor_dts_file-157F_ED1) \
 		  $(flavor_dts_file-157F_EV1)
 
-flavorlist-MP13 = $(flavor_dts_file-135F_DK)
+flavorlist-MP13 = $(flavor_dts_file-135F_DK) \
+                  $(flavor_dts_file-135F_PHYCORE_EMMC_1GB) \
+                  $(flavor_dts_file-135F_PHYCORE_EMMC_512MB)
 
 ifneq ($(PLATFORM_FLAVOR),)
 ifeq ($(flavor_dts_file-$(PLATFORM_FLAVOR)),)
