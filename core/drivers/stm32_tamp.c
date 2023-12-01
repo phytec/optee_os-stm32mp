@@ -1324,6 +1324,11 @@ static TEE_Result stm32_tamp_probe(const void *fdt, int node,
 	TEE_Result res = TEE_SUCCESS;
 	vaddr_t base = 0;
 
+	/* Manage dependency on RTC driver */
+	res = stm32_rtc_driver_is_initialized();
+	if (res)
+		return res;
+
 	res = stm32_tamp_get_platdata(&stm32_tamp.pdata);
 	if (res)
 		return res;
