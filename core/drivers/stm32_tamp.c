@@ -1324,6 +1324,11 @@ static TEE_Result stm32_tamp_probe(const void *fdt, int node,
 	TEE_Result res = TEE_SUCCESS;
 	vaddr_t base = 0;
 
+	/* Manage dependency on the RNG driver */
+	res = dt_driver_get_crypto();
+	if (res)
+		return res;
+
 	/* Manage dependency on RTC driver */
 	res = stm32_rtc_driver_is_initialized();
 	if (res)
